@@ -1,0 +1,21 @@
+<h1>Orders</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders$ | async">
+      <td>{{ order.datePlaced | date}}</td>
+      <td>{{ order.shipping.lastName }} {{order.shipping.firstName}}</td>
+      <td>{{ order.shipping.street }} - {{ order.shipping.county }} - {{ order.shipping.city }}</td>
+      <td>
+        <button type="button" (click)="delete(order.$key)"class="btn btn-danger" >X</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+<h3>Address</h3>
+<form #f="ngForm">
+  <div class="form-group">
+    <input #firstName="ngModel" name="firstName" [(ngModel)]="shipping.firstName" type="text" class="form-control" required placeholder="FirstName">
+    <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+      <div *ngIf="firstName.errors.required">First Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input #lastName="ngModel" name="lastName" [(ngModel)]="shipping.lastName" type="text" class="form-control" required placeholder="LastName">
+    <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
+      <div *ngIf="lastName.errors.required">Last Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group mb-3">
+        <span class="input-group-text">+84</span>
+      <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="shipping.phoneNumber" type="number" class="form-control" required placeholder="Phone Number">
+    </div>
+    <div class="alert alert-danger" *ngIf="phoneNumber.touched && phoneNumber.invalid">
+      <div *ngIf="phoneNumber.errors.required">Phone number is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" placeholder="Province/City" required>
+    <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+      <div *ngIf="city.errors.required">Province/City is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+      <input #county="ngModel" name="county" [(ngModel)]="shipping.county" type="text" class="form-control" placeholder="County/District" required>
+      <div class="alert alert-danger" *ngIf="county.touched && county.invalid">
+        <div *ngIf="county.errors.required">County/District is required.</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <input #street="ngModel" name="street" [(ngModel)]="shipping.street" type="text" class="form-control" placeholder="Street Names" required>
+    <div class="alert alert-danger" *ngIf="street.touched && street.invalid">
+      <div *ngIf="street.errors.required">Street is required.</div>
+    </div>
+  </div>
+  <button
+    [disabled]="!f.valid"
+    (click)="placeOrder(f.value)"
+    class="btn btn-primary">Place Order
+  </button>
+  <button *ngIf="f.valid"
+    (click)="delete()"
+    class="btn btn-danger">Delete
+  </button>
+
+</form>

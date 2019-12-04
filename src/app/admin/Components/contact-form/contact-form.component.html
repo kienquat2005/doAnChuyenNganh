@@ -1,0 +1,32 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name="ngModel" [(ngModel)]="user.name" name="name" id="name" type="text" class="form-control" required placeholder="Enter your name...">
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+      Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <div class="input-group mb-3">
+      <input #email="ngModel"  [(ngModel)]="user.email" name="email" id="email" type="email" class="form-control" required placeholder="Enter email...">
+    </div>
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors.required"> Email is required. </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="isAdmin">isAdmin</label>
+    <select #isAdmin="ngModel" [(ngModel)]="user.isAdmin" name="isAdmin" id="isAdmin" class="form-control" required>
+      <option [ngValue]="true">True</option>
+      <option [ngValue]="false">False</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="isAdmin.touched && isAdmin.invalid">
+      isAdmin is required.
+    </div>
+  </div>
+  <button class="btn btn-primary">Save</button>
+  <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+</form>
